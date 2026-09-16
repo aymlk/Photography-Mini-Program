@@ -1,0 +1,136 @@
+@import "tailwindcss" source(none);
+@source "../src";
+
+/* 设计令牌：与 Web 站保持一致（warm cream 主色 + Instrument Serif 斜体） */
+@theme {
+  --color-primary: #dedbc8;
+  --font-serif: "Instrument Serif", serif;
+}
+
+/* WXSS 不支持 * 通配符，字体只能通过元素选择器 + 继承下发 */
+page,
+view,
+text,
+image,
+video,
+cover-view {
+  font-family: "Almarai", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Helvetica Neue", Helvetica, sans-serif;
+}
+
+page {
+  background-color: #000000;
+  color: #e1e0cc;
+}
+
+/* ---------- 动效：framer-motion 在小程序无 DOM 环境不可用，改用 CSS keyframes ---------- */
+
+@keyframes pull-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 逐词/逐字上滑：delay 由内联 style 下发 */
+.pull-up {
+  display: inline-block;
+  opacity: 0;
+  animation: pull-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Hero 文案与按钮的淡入上滑 */
+.fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Features 卡片入场 */
+.card-enter {
+  animation: card-enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 手写渐变，避开 Tailwind v3/v4 渐变类名命名差异 */
+.grad-hero {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0) 45%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+.grad-card {
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.1) 45%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* 机位说明面板：切机位时重挂载重播 */
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.panel-in {
+  animation: panel-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* About 逐字点亮：透明度由 JS 按滚动进度写入内联 style，这里只负责过渡 */
+.scroll-char {
+  display: inline-block;
+  transition: opacity 0.35s linear;
+}
+
+/* ---------- 胶片颗粒：SVG data URI 必须 base64，WXSS 对未编码 data URI 支持不稳 ---------- */
+
+.noise-overlay {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyMDAgMjAwJz48ZmlsdGVyIGlkPSdhJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC44NScgbnVtT2N0YXZlcz0nMycgc3RpdGNoVGlsZXM9J3N0aXRjaCcvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbHRlcj0ndXJsKCNhKScvPjwvc3ZnPg==");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+.bg-noise {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyMDAgMjAwJz48ZmlsdGVyIGlkPSdiJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC45JyBudW1PY3RhdmVzPSc0JyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9JzEwMCUnIGhlaWdodD0nMTAwJScgZmlsdGVyPSd1cmwoI2IpJy8+PC9zdmc+");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+.noise-overlay,
+.bg-noise {
+  pointer-events: none;
+}

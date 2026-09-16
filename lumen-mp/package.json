@@ -1,0 +1,41 @@
+{
+  "name": "lumen-mp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lumen 摄影工作室 - 微信小程序端",
+  "templateInfo": {
+    "name": "default",
+    "typescript": true,
+    "css": "none"
+  },
+  "scripts": {
+    "dev:weapp": "taro build --type weapp --watch",
+    "build:weapp": "taro build --type weapp",
+    "dev:h5": "taro build --type h5 --watch",
+    "build:h5": "taro build --type h5"
+  },
+  "dependencies": {
+    "@tarojs/components": "4.2.1",
+    "@tarojs/plugin-platform-weapp": "4.2.1",
+    "@tarojs/react": "4.2.1",
+    "@tarojs/runtime": "4.2.1",
+    "@tarojs/taro": "4.2.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "@prefresh/babel-plugin": "^0.5.1",
+    "@tarojs/cli": "4.2.1",
+    "@tarojs/plugin-framework-react": "4.2.1",
+    "@tarojs/webpack5-runner": "4.2.1",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.12",
+    "babel-preset-taro": "4.2.1",
+    "react-refresh": "^0.14.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.6.3",
+    "weapp-tailwindcss": "^5.5.1"
+  }
+}

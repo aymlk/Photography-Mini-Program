@@ -1,0 +1,28 @@
+{
+  "miniprogramRoot": "dist/",
+  "projectname": "橙梨影视",
+  "description": "橙梨影视婚礼影像工作室",
+  "appid": "touristappid",
+  "compileType": "miniprogram",
+  "libVersion": "3.5.5",
+  "setting": {
+    "urlCheck": false,
+    "es6": false,
+    "enhance": true,
+    "postcss": false,
+    "minified": false,
+    "coverView": true,
+    "lazyloadPlaceholderEnable": false,
+    "ignoreDevUnusedFiles": false,
+    "checkInvalidKey": true,
+    "showShadowRootInWxmlPanel": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "condition": {}
+}
